@@ -4,12 +4,12 @@
 }:
 
 let
-  version = "1.3.0";
+  version = "1.2.3";
   src = fetchFromGitHub {
     owner  = "tamarin-prover";
     repo   = "tamarin-prover";
-    rev    = "8e823691ad3325bce8921617b013735523d74557";
-    sha256 = "0rr2syl9xhv17bwky5p39mhn0bypr24h8pld1xidxv87vy7vk7nr";
+    rev    = "${version}";
+    sha256 = "0z2mmc8nxmppwp4330wy9v14664wq5fn8ml0bim38pa10wz5hh9i";
   };
 
   # tamarin has its own dependencies, but they're kept inside the repo,
