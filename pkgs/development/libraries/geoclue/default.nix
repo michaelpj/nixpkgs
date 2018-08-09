@@ -1,5 +1,7 @@
 { fetchurl, stdenv, intltool, pkgconfig, gtk-doc, docbook_xsl, docbook_xml_dtd_412, glib, json-glib, libsoup, libnotify, gdk_pixbuf
 , modemmanager, avahi, glib-networking, wrapGAppsHook, gobjectIntrospection
+# doc build currently seems to be broken
+, enableDocs ? false
 , withDemoAgent ? false
 }:
 
@@ -7,18 +9,21 @@ with stdenv.lib;
 
 stdenv.mkDerivation rec {
   name = "geoclue-${version}";
-  version = "2.4.10";
+  version = "2.4.11";
 
   src = fetchurl {
     url = "https://www.freedesktop.org/software/geoclue/releases/${stdenv.lib.versions.majorMinor version}/${name}.tar.xz";
-    sha256 = "0h4n8jf7w457sglfdhghkyf8n4v4a5jrx8dgdy5zn35nbscx24l4";
+    sha256 = "07gk2fbl1wg4fbqj5f1vap3xvw0dszisllfdx81hbbxcwkvpyf81";
   };
 
-  outputs = [ "out" "dev" "devdoc" ];
+  outputs = [ 
+    "out" 
+    "dev" 
+  ] ++ optionals enableDocs [ "devdoc"];
 
   nativeBuildInputs = [
-    pkgconfig intltool gtk-doc docbook_xsl docbook_xml_dtd_412 wrapGAppsHook gobjectIntrospection
-  ];
+    pkgconfig intltool wrapGAppsHook gobjectIntrospection
+  ] ++ optionals enableDocs [ gtk-doc docbook_xsl docbook_xml_dtd_412 ];
 
   buildInputs = [
     glib json-glib libsoup avahi
@@ -31,7 +36,7 @@ stdenv.mkDerivation rec {
   configureFlags = [
     "--with-systemdsystemunitdir=$(out)/etc/systemd/system"
     "--enable-introspection"
-    "--enable-gtk-doc"
+    "--enable-gtk-doc=${if enableDocs then "yes" else "no"}"
     "--enable-demo-agent=${if withDemoAgent then "yes" else "no"}"
   ] ++ optionals stdenv.isDarwin [
     "--disable-silent-rules"
