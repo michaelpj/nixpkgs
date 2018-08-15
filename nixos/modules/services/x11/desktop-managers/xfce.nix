@@ -59,9 +59,6 @@ in
       tango-icon-theme
       xfce4-icon-theme
 
-      desktop-file-utils
-      shared-mime-info
-
       # Needed by Xfce's xinitrc script
       # TODO: replace with command -v
       which
@@ -97,11 +94,16 @@ in
         xfdesktop
       ];
 
+    xdg = {
+      autostart.enable = true;
+      menus.enable = true;
+      mime.enable = true;
+      icons.enable = true;
+    };
+
     environment.pathsToLink = [
       "/share/xfce4"
       "/share/themes"
-      "/share/mime"
-      "/share/desktop-directories"
       "/share/gtksourceview-2.0"
     ];
 

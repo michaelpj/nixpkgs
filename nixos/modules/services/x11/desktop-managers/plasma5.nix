@@ -174,7 +174,12 @@ in
         ++ lib.optional config.services.colord.enable colord-kde
         ++ lib.optionals config.services.samba.enable [ kdenetwork-filesharing pkgs.samba ];
 
-      environment.pathsToLink = [ "/share" ];
+      xdg = {
+        autostart.enable = true;
+        menus.enable = true;
+        mime.enable = true;
+        icons.enable = true;
+      };
 
       environment.etc = singleton {
         source = xcfg.xkbDir;
