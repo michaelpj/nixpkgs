@@ -64,13 +64,6 @@ in
         pkgs.lxqt.optionalPackages
         config.environment.lxqt.excludePackages);
 
-    xdg = {
-      autostart.enable = true;
-      menus.enable = true;
-      mime.enable = true;
-      icons.enable = true;
-    };
-
     # Link some extra directories in /run/current-system/software/share
     environment.pathsToLink = [ "/share" ];
 

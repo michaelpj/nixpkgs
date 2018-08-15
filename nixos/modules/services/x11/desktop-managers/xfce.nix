@@ -94,13 +94,6 @@ in
         xfdesktop
       ];
 
-    xdg = {
-      autostart.enable = true;
-      menus.enable = true;
-      mime.enable = true;
-      icons.enable = true;
-    };
-
     environment.pathsToLink = [
       "/share/xfce4"
       "/share/themes"

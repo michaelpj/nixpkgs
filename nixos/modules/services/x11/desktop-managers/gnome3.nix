@@ -130,13 +130,6 @@ in {
 
     fonts.fonts = [ pkgs.dejavu_fonts pkgs.cantarell-fonts ];
 
-    xdg = {
-      autostart.enable = true;
-      menus.enable = true;
-      mime.enable = true;
-      icons.enable = true;
-    };
-
     services.xserver.displayManager.extraSessionFilePackages = [ pkgs.gnome3.gnome-session ];
 
     services.xserver.displayManager.sessionCommands = ''

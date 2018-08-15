@@ -94,13 +94,6 @@ in
       '';
     };
 
-    xdg = {
-      autostart.enable = true;
-      menus.enable = true;
-      mime.enable = true;
-      icons.enable = true;
-    };
-
     environment.systemPackages =
       pkgs.mate.basePackages ++
       (removePackagesByName

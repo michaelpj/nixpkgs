@@ -38,13 +38,6 @@ in
       pkgs.xorg.xcursorthemes
     ];
 
-    xdg = {
-      autostart.enable = true;
-      menus.enable = true;
-      mime.enable = true;
-      icons.enable = true;
-    };
-
     environment.pathsToLink = [ 
       "/etc/enlightenment" 
       "/share/enlightenment" 
