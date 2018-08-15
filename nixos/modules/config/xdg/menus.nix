@@ -15,9 +15,9 @@ with lib;
   config = mkIf config.xdg.menus.enable {
     environment.pathsToLink = [ 
       "/share/applications"
-      "/share/applications-merged"
       "/share/desktop-directories"
       "/share/menus"
+      "/share/menus/applications-merged"
     ];
   };
 
