@@ -82,6 +82,12 @@ let cfg = config.documentation; in
       environment.systemPackages = [ pkgs.texinfoInteractive ];
       environment.pathsToLink = [ "/share/info" ];
       environment.extraOutputsToInstall = [ "info" ] ++ optional cfg.dev.enable "devinfo";
+      environment.extraSetup = ''
+        shopt -s nullglob
+        for i in $out/share/info/*.info $out/share/info/*.info.gz; do
+            ${pkgs.texinfo}/bin/install-info $i $out/share/info/dir
+        done
+      '';
     })
 
     (mkIf cfg.doc.enable {
