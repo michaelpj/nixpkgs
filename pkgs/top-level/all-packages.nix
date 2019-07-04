@@ -1924,6 +1924,8 @@ in
 
   asciidoctor = callPackage ../tools/typesetting/asciidoctor { };
 
+  mathoid = callPackage ../tools/typesetting/mathoid { };
+
   asunder = callPackage ../applications/audio/asunder { };
 
   autossh = callPackage ../tools/networking/autossh { };
